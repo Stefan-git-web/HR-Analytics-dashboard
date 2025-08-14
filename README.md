@@ -1,76 +1,100 @@
-# 🧑‍💼 HR Analytics Dashboard – Power BI
+🧑‍💼 HR Analytics Dashboard – Power BI
 
-This project presents an **interactive HR Analytics Dashboard** built in **Power BI** to track employee attrition trends, demographic patterns, and satisfaction levels.  
-The dashboard helps HR teams make data-driven decisions to reduce turnover and improve employee retention.
+This project showcases an interactive HR Analytics Dashboard built in Power BI to analyze employee attrition, demographics, and job satisfaction trends.
+The goal is to help HR teams make data-driven decisions to reduce turnover and improve retention.
 
----
+## 📊 Dashboard Preview
+![HR Analytics Dashboard](https://github.com/Stefan-git-web/HR-Analytics-dashboard/blob/main/Screenshot%202025-08-14%20172143.png)
 
-## 🚀 Features
-- **KPIs**:
-  - Total Employees
-  - Total Attrition Count
-  - Attrition Rate
-  - Average Age
-  - Average Salary
-  - Average Years in Company
-- **Attrition breakdowns**:
-  - By Gender
-  - By Education Field
-  - By Age Group
-  - By Salary Slab
-  - By Years at Company
-  - By Job Role
-- **Employee Feedback** scores by Job Role
-- Interactive **Department filter** for Human Resources, Research & Development, Sales
 
----
+🚀 Features
 
-## 📂 Dataset
+Key Performance Indicators (KPIs):
+
+Total Employees
+
+Total Attrition Count
+
+Attrition Rate (%)
+
+Average Age
+
+Average Monthly Salary
+
+Average Years at Company
+
+Attrition Analysis:
+
+By Gender
+
+By Education Field
+
+By Age Group
+
+By Salary Slab
+
+By Years at Company
+
+By Job Role
+
+Employee Feedback by Job Role
+
+Interactive Department Filter (Human Resources, R&D, Sales)
+
+📂 Dataset
+
 The dataset contains:
-- Employee demographic details (age, gender, education, salary, years at company)
-- Job-related data (role, department, feedback score)
-- Attrition indicator
-- Salary Slabs
-- Education fields
 
----
+Employee demographics (Age, Gender, Education, Salary, Years at Company)
 
-## 🛠 Steps Followed
+Job-related details (Role, Department, Feedback score)
 
-### 1️⃣ Data Loading & Cleaning
-- Imported dataset into Power BI
-- Removed duplicates and null values
-- Verified data types for each column (Date, Number, Text)
+Attrition indicator
 
-### 2️⃣ Data Modelling
-- Created relationships between tables (Fact Table: Employee Attrition, Dimensions: Departments, Job Roles, Education Fields)
-- Ensured a **Star Schema** model
+Salary Slabs & Education Fields
 
-#  3️⃣ Visualization
+🛠 Steps Followed
+1️⃣ Data Loading & Cleaning
 
-Card visuals for KPIs
+Imported dataset into Power BI
 
-Donut Chart for Attrition by Education Field
+Removed duplicates and handled null values
 
-Clustered Bar Chart for Attrition by Age Group, Salary Slab, Job Role
+Verified correct data types for each field (Date, Number, Text)
 
-Matrix Table for Employee Feedback by Job Role
+2️⃣ Data Modelling
 
-Line Chart for Attrition by Years at Company
+Created relationships between Fact Table: Employee Attrition and Dimension Tables: Departments, Job Roles, Education Fields
 
-Slicers for Department filter
+Implemented a Star Schema model
 
-# 4️⃣ Formatting
+3️⃣ Visualizations
+
+Cards for KPIs
+
+Donut Chart – Attrition by Education Field
+
+Clustered Bar Chart – Attrition by Age Group, Salary Slab, Job Role
+
+Matrix Table – Employee Feedback by Job Role
+
+Line Chart – Attrition by Years at Company
+
+Slicers – Department filter
+
+4️⃣ Formatting
 
 Used red-themed gradient background
 
-Added clear legends and labels
+Added legends, labels, and consistent color schemes
 
-Kept consistent visual order for easy analysis
+Organized visuals for intuitive analysis
 
-# 💡 Insights
+💡 Key Insights
 
-Total Employees: 1,470, with 237 attrition cases (16.1% rate)
+Total Employees: 1,470
+
+Attrition Count: 237 (16.1% rate)
 
 Highest attrition age group: 26–35 years (116 employees)
 
@@ -82,19 +106,24 @@ Highest attrition salary slab: Up to 5k
 
 Most attrition occurs within 1 year of joining (59 employees)
 
-Males have higher attrition (140) compared to females (79)
+Male attrition higher (140) than female (79)
 
-# 🛠 Tools Used
+🛠 Tools Used
 
-Power BI for data modeling & visualization
-Excel/CSV as the data source
+Power BI – Data modeling & visualization
 
-### 5️⃣ DAX Measures
-**KPIs**
-```DAX
+Excel / CSV – Data source
+
+📐 DAX Measures
+
+KPIs
+
 Count of Employees = COUNTROWS(Employees)
 
-Attrition = CALCULATE(COUNTROWS(Employees), Employees[Attrition] = "Yes")
+Attrition = CALCULATE(
+    COUNTROWS(Employees),
+    Employees[Attrition] = "Yes"
+)
 
 Attrition Rate = DIVIDE([Attrition], [Count of Employees], 0)
 
@@ -104,10 +133,22 @@ Avg Salary = AVERAGE(Employees[MonthlyIncome])
 
 Avg Years = AVERAGE(Employees[YearsAtCompany])
 
-# Attrition by Category
-Attrition Count = CALCULATE(COUNTROWS(Employees), Employees[Attrition] = "Yes")
-Attrition % by Field = DIVIDE([Attrition Count], CALCULATE([Attrition Count], ALL(Employees[EducationField])), 0)
 
-### Feedback Total
+Attrition by Category
+
+Attrition Count = CALCULATE(
+    COUNTROWS(Employees),
+    Employees[Attrition] = "Yes"
+)
+
+Attrition % by Field = DIVIDE(
+    [Attrition Count],
+    CALCULATE([Attrition Count], ALL(Employees[EducationField])),
+    0
+)
+
+
+Feedback Total
+
 Total Feedback = SUM(Employees[Feedback])
 
